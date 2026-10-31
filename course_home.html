@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CV, ML и VLA для соревновательной робототехники</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fafaf7;--fg:#1d1d1b;--mut:#6b6b66;--card:#fff;--bd:#e2e0d8;--ac:#c2410c;--code:#f1efe8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171a;--fg:#ecebe6;--mut:#9a998f;--card:#202024;--bd:#34343a;--ac:#fb923c;--code:#26262b}}
+:root[data-theme="dark"]{--bg:#17171a;--fg:#ecebe6;--mut:#9a998f;--card:#202024;--bd:#34343a;--ac:#fb923c;--code:#26262b}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 Georgia,"Times New Roman",serif}
+main{max-width:860px;margin:0 auto;padding:24px 18px 80px}
+h1{font-size:2rem;line-height:1.2;margin:.2em 0}
+h2{margin-top:2.4em;font-size:1.5rem;border-bottom:2px solid var(--ac);padding-bottom:.2em}
+h3{margin-top:1.6em}
+h1,h2,h3,button,label,summary,nav,.tag{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.tag{color:var(--ac);font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:.8rem}
+nav{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.9rem;margin:14px 0}
+a{color:var(--ac)}
+code,pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem}
+code{background:var(--code);padding:1px 5px;border-radius:4px}
+pre{background:var(--code);padding:14px;border-radius:8px;overflow-x:auto;border:1px solid var(--bd)}
+pre code{padding:0;background:none}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px 18px;margin:16px 0}
+.warn{border-left:4px solid var(--ac)}
+.def{border-left:4px solid #2563eb}
+.sc{overflow-x:auto}
+table{border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid var(--bd);padding:5px 10px;text-align:center;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem}
+th{background:var(--code)}
+img{max-width:100%;border-radius:8px;border:1px solid var(--bd)}
+figcaption{color:var(--mut);font-size:.85rem}
+button{background:var(--card);color:var(--fg);border:1px solid var(--bd);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:.9rem}
+button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.row{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.row label{display:flex;gap:8px;align-items:center;font-size:.85rem;min-width:230px}
+input[type=range]{width:130px}
+.bar{height:26px;border-radius:6px;background:linear-gradient(90deg,hsl(0,100%,50%),hsl(60,100%,50%),hsl(120,100%,50%),hsl(180,100%,50%),hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%));margin-top:8px}
+.tk{display:flex;justify-content:space-between;font:.75rem ui-monospace,monospace;color:var(--mut)}
+#grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;max-width:480px;margin:12px 0}
+.c{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font:600 .72rem/1.2 ui-monospace,monospace;cursor:pointer;border:3px solid transparent;color:#fff;text-shadow:0 0 3px #000,0 0 3px #000}
+.c.g{border-color:#fff;outline:3px solid #2563eb}
+.c.ok{outline:4px solid #16a34a}.c.bad{outline:4px solid #dc2626}
+.c.dim{opacity:.25}
+details{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:8px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.q button{display:block;margin:5px 0;text-align:left}
+.q .r{font:.85rem system-ui}
+#sw{width:70px;height:70px;border-radius:10px;border:1px solid var(--bd)}
+
+.hero{padding:6px 0 4px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.st{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:8px 14px;font:.85rem system-ui}
+.st b{display:block;font-size:1.3rem;color:var(--ac)}
+.pg{height:8px;background:var(--code);border-radius:6px;overflow:hidden;margin:6px 0 2px}
+.pg i{display:block;height:100%;background:var(--ac);width:0}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.tools input[type=search]{flex:1;min-width:200px;padding:8px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--fg);font-size:.95rem}
+.mod{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:0;margin:14px 0}
+.mod>summary{padding:14px 18px;list-style:none;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.mod>summary::-webkit-details-marker{display:none}
+.mod>summary b{font-size:1.1rem}
+.mod .cnt{margin-left:auto;font:.8rem system-ui;color:var(--mut)}
+.md{padding:0 18px 4px;color:var(--mut);font:.9rem/1.5 system-ui}
+.tl{list-style:none;margin:8px 0 6px;padding:0}
+.tl li{display:flex;gap:12px;align-items:center;padding:9px 18px;border-top:1px solid var(--bd)}
+.tl .n{font:600 .85rem ui-monospace,monospace;color:var(--mut);min-width:24px}
+.tl .t{flex:1;font:.95rem/1.4 system-ui}
+.tl .go{font:600 .85rem system-ui;white-space:nowrap}
+.bd{font:.72rem system-ui;padding:2px 8px;border-radius:20px;border:1px solid var(--bd);color:var(--mut);white-space:nowrap}
+.bd.oh{border-color:#2563eb;color:#2563eb}.bd.pr{border-color:var(--ac);color:var(--ac)}
+.soon{color:var(--mut);font:.82rem system-ui}
+.next{background:rgba(194,65,12,.08)}
+li.hide,.mod.hide{display:none}
+.hw{margin:0 18px 14px;font:.85rem/1.5 system-ui;color:var(--mut)}
+</style></head><body><main>
+<div class="hero"><div class="tag">Программа курса · 50 часов</div>
+<h1>Computer Vision, ML и VLA для соревновательной робототехники</h1>
+<p>Фундамент по классическому CV и нейросетям, практика с VLM/VLA и интеграция на железе. Конспекты лекций выходят по одному в неделю: доступные темы отмечены ссылкой «Открыть», остальные появятся позже.</p></div>
+<div class="stats"><div class="st"><b>5</b>модулей по 10 часов</div><div class="st"><b id="sa">0</b>конспектов готово</div><div class="st"><b>50</b>тем всего</div></div>
+<div class="pg"><i id="pb"></i></div><div class="soon" id="pt"></div>
+<div class="tools"><input type="search" id="q" placeholder="Поиск по темам: HSV, Canny, YOLO, CLIP…" oninput="rd()"><label style="font:.9rem system-ui"><input type="checkbox" id="av" onchange="rd()"> только доступные</label></div>
+<div id="mods"></div>
+<p class="soon" style="margin-top:30px">Формат занятий: лекции, office hours и проектные часы. Цель курса: дать фундамент по классическому CV и нейросетям и практические навыки работы с VLM/VLA и интеграцией на железе.</p>
+</main>
+<script>
+/* ===== Чтобы добавить конспект: впишите ссылку в L (номер темы: "ссылка") ===== */
+var L={1:"lessons/OpenCV1.html",2:"lessons/OpenCV2.html"};
+var OH=[9,19,29,39,43,44,45,46,47,48,49],PR=[10,20,30,40,50];
+var M=[
+{t:"Модуль 1. Классическое зрение",d:"Алгоритмы, которые работают быстро и надёжно на слабом железе.",hw:"ДЗ: базовые алгоритмы «с нуля» на чистом NumPy (гауссов блюр, Собель, перевод RGB в HSV).",a:1,T:[
+"Изображение как матрица. Цветовые пространства (RGB vs HSV)","Бинаризация и фильтрация. Маски и пороговые фильтры (Thresholding)","Матричные свёртки с нуля. Как работает Blur","Выделение границ. Фильтры Собеля и Canny. Морфология","Поиск контуров. Центр масс объекта и его площадь","Геометрия камеры. Искажения, intrinsic/extrinsic, калибровка","Маркерные системы. ArUco / AprilTags","Трекинг объектов. Optical Flow и простые трекеры","Office Hour 1: разбор домашек и частых багов","Проектный час: следование по линии / захват цветного объекта с OpenCV"]},
+{t:"Модуль 2. Введение в ML и свёрточные сети",d:"От линейной регрессии до CNN и transfer learning.",hw:"ДЗ: пайплайн обучения в PyTorch, работа с тензорами, аугментация датасета.",T:[
+"Основы ML. Линейная регрессия, градиентный спуск","Перцептрон. Устройство нейрона и функции активации","Обучение сети. Backpropagation","Введение в PyTorch. Тензоры, градиенты, пайплайн обучения","Идея свёрточной сети (CNN). Проблема полносвязных сетей для картинок","Архитектура CNN. Pooling, Stride, Receptive Field","Аугментация данных. Почему робот слепнет при смене освещения","Transfer Learning. Дообучение готовой сети на малом датасете","Office Hour 2: разбор багов PyTorch","Проектный час: классификатор элементов соревнований (мяч или кубик)"]},
+{t:"Модуль 3. Детекция объектов и Edge AI",d:"Детекция объектов и деплой на Raspberry Pi / Jetson.",hw:"ДЗ: собрать мини-датасет из предметов на столе, разметить и обучить свою YOLO.",T:[
+"Эволюция детекции. Скользящее окно, R-CNN, метрики (IoU, mAP)","YOLO-архитектуры. YOLOv8 / v10: как предсказываются bounding boxes","Сбор и разметка датасета. Roboflow","Fine-tuning YOLO. Обучение на кастомный датасет","Сегментация (U-Net). Bounding box против точной маски","Оптимизация моделей. Квантование, прунинг","Edge AI. Нейросеть на Raspberry Pi / Jetson Nano. TensorRT, ONNX","Depth-камеры. Intel RealSense, OAK-D","Office Hour 3: консультации по разметке и обучению YOLO","Проектный час: инференс YOLO с веб-камеры в реальном времени"]},
+{t:"Модуль 4. VLM: трансформеры и мультимодальность",d:"Облегчённый блок про современные архитектуры.",hw:"ДЗ: zero-shot классификатор на API или готовых весах CLIP, без сбора датасета.",T:[
+"Embeddings. Как превратить смыслы в числа","Механизм Attention. Почему трансформеры вытесняют свёртки","Vision Transformer (ViT). Разделение изображения на патчи","Contrastive Learning. Обучение CLIP, связка пикселей и текста","Zero-shot classification. Поиск объектов, которых модель не видела","Введение в VLM. Обзор лёгких моделей (LLaVA, Qwen-VL)","Промпт-инжиниринг. Spatial reasoning","Интеграция VLM. Работа по API и локальные лёгкие модели","Office Hour 4: эксперименты с CLIP и настройка промптов","Проектный час: скрипт «умного поиска» («красный кубик левее синего»)"]},
+{t:"Модуль 5. Архитектура управления и финальный проект",d:"Интеграция разрозненных алгоритмов в единый отказоустойчивый пайплайн.",hw:"Итог: защита проекта с демонстрацией пайплайна и архитектурных решений.",T:[
+"VLA (Vision-Language-Action). RT-1 / OpenVLA, токенизация моторики","Архитектура соревновательного робота. Гибриды OpenCV + YOLO/VLM","Проектный Office Hour 1 (Архитектура): тема проекта, дизайн пайплайна","Проектный Office Hour 2 (Сенсорика): стабилизация потока, задержки","Проектный Office Hour 3 (Интеграция зрения): CV/YOLO в общий цикл","Проектный Office Hour 4 (Логика): State Machine, пиксели в решения","Проектный Office Hour 5 (Оптимизация FPS): профилирование, многопоточность","Проектный Office Hour 6 (Стресс-тест): прогон пайплайна, отлов багов","Проектный Office Hour 7 (Полировка): дебаг и техническая презентация","Защита проектов: демонстрация пайплайна и защита решений"]}];
+function $(i){return document.getElementById(i)}
+function nextN(){for(var n=1;n<=50;n++)if(!L[n])return n;return 0}
+function rd(){var q=$('q').value.trim().toLowerCase(),av=$('av').checked,nx=nextN(),h='',cnt=Object.keys(L).length,n=0;
+M.forEach(function(m,mi){var items='',ready=0,shown=0;m.T.forEach(function(t,i){var k=mi*10+i+1;if(L[k])ready++;
+var ok=(!q||t.toLowerCase().indexOf(q)>-1||String(k)==q)&&(!av||L[k]);if(!ok)return;shown++;
+var tag=OH.indexOf(k)>-1?'<span class="bd oh">office hour</span>':PR.indexOf(k)>-1?'<span class="bd pr">проект</span>':'';
+var act=L[k]?'<a class="go" href="'+L[k]+'" target="_blank" rel="noopener">Открыть →</a>':'<span class="soon">'+(k==nx?'следующая':'скоро')+'</span>';
+items+='<li class="'+(k==nx?'next':'')+'"><span class="n">'+k+'</span><span class="t">'+t+'</span>'+tag+act+'</li>'});
+h+='<details class="mod'+((q||av)&&!shown?' hide':'')+'" '+(m.a||q||av?'open':'')+'><summary><b>'+m.t+'</b><span class="cnt">'+ready+' из 10 готово</span></summary><div class="md">'+m.d+'</div><ul class="tl">'+items+'</ul><div class="hw">'+m.hw+'</div></details>'});
+$('mods').innerHTML=h;$('sa').textContent=cnt;$('pb').style.width=(cnt/50*100)+'%';$('pt').textContent='Готово '+cnt+' из 50 тем'}
+rd();
+</script></body></html>
